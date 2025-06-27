@@ -1,0 +1,21 @@
+n = 10;
+a = 0;
+b = 1;
+i = 0;
+
+print "Fibonacci sequence up to ";
+print n;
+print ":";
+
+while (i < n) {
+    print a;
+    temp = a + b;
+    a = b;
+    b = temp;
+    i = i + 1;
+}
+
+print "The ";
+print n;
+print "th Fibonacci number is: ";
+print a;

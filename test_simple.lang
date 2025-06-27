@@ -1,0 +1,10 @@
+// Простой тест интерпретатора
+x = 5;
+y = 3;
+z = x + y;
+print "x = ";
+print x;
+print "\ny = ";
+print y;
+print "\nx + y = ";
+print z; 

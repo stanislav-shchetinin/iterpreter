@@ -1,0 +1,31 @@
+x = 10;
+y = 3.5;
+z = "Hello";
+w = "World";
+
+print "Integer: ";
+print x;
+
+print "Double: ";
+print y;
+
+print "String: ";
+print z;
+
+print "String concatenation: ";
+print z + " " + w;
+
+print "Number + String: ";
+print x + " is a number";
+
+print "Arithmetic operations:";
+print x + y;
+print x * y;
+print x / y;
+
+print "Comparison:";
+if (x > y) {
+    print "x is greater than y";
+} else {
+    print "y is greater than x";
+} 
