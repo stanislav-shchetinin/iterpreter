@@ -6,7 +6,7 @@ if [ $# -eq 0 ]; then
     echo "  ./run.sh programs/fibonacci.lang"
     echo "  ./run.sh programs/gcd.lang"
     echo "  ./run.sh programs/types.lang"
-    echo "  ./run.sh test_simple.lang"
+    echo "  ./run.sh programs/test_simple.lang"
     exit 1
 fi
 
@@ -18,7 +18,8 @@ if [ ! -f "$PROGRAM_FILE" ]; then
 fi
 
 echo "Compiling Lango interpreter..."
-./mvnw clean compile
+mvn clean compile
+mvn package
 
 if [ $? -ne 0 ]; then
     echo "Compilation failed!"
@@ -27,6 +28,6 @@ fi
 
 echo "Running program: $PROGRAM_FILE"
 echo "----------------------------------------"
-java -cp target/classes:target/dependency/* com.example.Main "$PROGRAM_FILE"
+java -jar target/lango-interpreter-1.0-SNAPSHOT.jar "$PROGRAM_FILE"
 echo "----------------------------------------"
 echo "Program finished." 
