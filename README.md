@@ -54,7 +54,7 @@ mvn clean compile
 mvn package
 
 # Запуск интерпретатора
-java -cp target/classes com.example.Main <program_file>
+java -jar target/lango-interpreter-1.0-SNAPSHOT.jar <program-file>
 ```
 
 ## Примеры программ
