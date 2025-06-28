@@ -39,29 +39,16 @@ public class Interpreter extends LangoBaseVisitor<Value> {
         Value condition = visit(ctx.expression());
         
         if (condition.asBoolean()) {
-            // Создаем новую область видимости для блока if
-            Scope ifScope = new Scope(currentScope);
-            Scope previousScope = currentScope;
-            currentScope = ifScope;
-            
-            // Выполняем все операторы в блоке if
+            // Выполняем все операторы в блоке if в текущей области видимости
             for (StatementContext statement : ctx.statement()) {
                 visit(statement);
             }
-            
-            currentScope = previousScope;
         } else if (ctx.statement().size() > 1) {
             // Блок else (второй набор операторов)
-            Scope elseScope = new Scope(currentScope);
-            Scope previousScope = currentScope;
-            currentScope = elseScope;
-            
             // Пропускаем первый блок (if) и берем второй (else)
             for (int i = 1; i < ctx.statement().size(); i++) {
                 visit(ctx.statement(i));
             }
-            
-            currentScope = previousScope;
         }
         
         return new Value(0);
@@ -70,17 +57,10 @@ public class Interpreter extends LangoBaseVisitor<Value> {
     @Override
     public Value visitWhileStatement(WhileStatementContext ctx) {
         while (visit(ctx.expression()).asBoolean()) {
-            // Создаем новую область видимости для каждой итерации
-            Scope whileScope = new Scope(currentScope);
-            Scope previousScope = currentScope;
-            currentScope = whileScope;
-            
-            // Выполняем все операторы в блоке while
+            // Выполняем все операторы в блоке while в текущей области видимости
             for (StatementContext statement : ctx.statement()) {
                 visit(statement);
             }
-            
-            currentScope = previousScope;
         }
         return new Value(0);
     }
